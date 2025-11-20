@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="google-site-verification" content="W5PPN0XcWdx7ria9AOBMwpTvZXOae0FfF06SdzSLwK0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. SEO TITLES & DESCRIPTIONS (EDIT THESE!) -->
+    <title>Lens Logic | Tech Reviews & Photography in Pakistan</title>
+    <meta name="description" content="Honest reviews of smartphones, cameras, and photography tips for Android users. A blog by [Your Name] based in Pakistan.">
+    <meta name="keywords" content="tech reviews pakistan, best camera phone 2025, mobile photography tips, android editing, budget phones">
+    <meta name="author" content="Your Name">
+    
+    <!-- 2. SOCIAL MEDIA PREVIEWS (For WhatsApp/Facebook) -->
+    <meta property="og:title" content="Tech & Photo Reviews - My Blog">
+    <meta property="og:description" content="Read my latest reviews on cameras and tech.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800">
+    <meta property="og:type" content="website">
+
+    <!-- 3. GOOGLE ADSENSE SCRIPT -->
+    <!-- Paste your AdSense script here later -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .ad-space { background-color: #f3f4f6; border: 2px dashed #cbd5e1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #64748b; margin: 2rem 0; padding: 1rem; text-align: center; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
+            <div onclick="showHome()" class="text-xl font-bold text-indigo-600 cursor-pointer">TECH JOURNAL.</div>
+            <div class="flex gap-4 text-sm font-medium">
+                <button onclick="showHome()" class="hover:text-indigo-600">Home</button>
+                <button onclick="showPage('privacy')" class="hover:text-indigo-600">Privacy</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+
+        <!-- TOP AD BANNER -->
+        <div class="ad-space w-full h-28 rounded-lg">
+            <span class="text-xs font-bold uppercase text-gray-400">Advertisement</span>
+        </div>
+
+        <!-- HOME VIEW -->
+        <div id="view-home" class="animate-fade">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900">Tech Reviews & <br> <span class="text-indigo-600">Photography</span></h1>
+                <p class="text-gray-500">Honest opinions on the gear that matters.</p>
+            </div>
+
+            <!-- BLOG LIST -->
+            <div id="post-list" class="grid md:grid-cols-2 gap-6">
+                <!-- Posts injected via JS -->
+            </div>
+        </div>
+
+        <!-- ARTICLE VIEW -->
+        <div id="view-article" class="hidden">
+            <button onclick="showHome()" class="mb-4 text-gray-500 hover:text-indigo-600 font-bold text-sm"><i class="fa-solid fa-arrow-left"></i> BACK TO HOME</button>
+            <article>
+                <span id="art-cat" class="text-indigo-600 font-bold text-xs uppercase">Category</span>
+                <h1 id="art-title" class="text-3xl font-bold mt-2 mb-4">Title</h1>
+                <img id="art-img" class="w-full h-64 object-cover rounded-xl mb-6">
+                
+                <!-- IN-ARTICLE AD -->
+                <div class="ad-space w-full h-24 my-6 rounded">
+                    <span class="text-xs font-bold uppercase text-gray-400">Advertisement</span>
+                </div>
+
+                <div id="art-content" class="prose prose-lg text-gray-700"></div>
+            </article>
+        </div>
+
+        <!-- PRIVACY POLICY (REQUIRED FOR GOOGLE) -->
+        <div id="view-privacy" class="hidden">
+            <h1 class="text-2xl font-bold mb-4">Privacy Policy</h1>
+            <p class="text-sm text-gray-600">This website uses cookies to serve ads via Google AdSense...</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-50 mt-12 py-8 text-center text-xs text-gray-500">
+        <p>© 2025 Tech Journal Pakistan.</p>
+    </footer>
+
+    <script>
+        // --- BLOG CONTENT ---
+        // GOOGLE WILL ONLY RANK YOU IF YOU WRITE REAL TEXT HERE
+        const posts = [
+            {
+                id: 1,
+                title: "Best Budget Phones in Pakistan (Under 50k)",
+                category: "Smartphones",
+                image: "https://images.unsplash.com/photo-1598327105666-5b89351aff70?q=80&w=800",
+                content: `<p class="mb-4">Finding a phone under 50,000 PKR is hard due to inflation. However, brands like Xiaomi and Tecno are offering great value.</p><p>In this review, I look at the camera quality and battery life...</p>`
+            },
+            {
+                id: 2,
+                title: "How to Edit Photos for Instagram",
+                category: "Tutorials",
+                image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800",
+                content: `<p class="mb-4">Stop using heavy filters. Here is how to use Lightroom Mobile to make your photos pop naturally.</p>`
+            }
+        ];
+
+        function renderPosts() {
+            document.getElementById('post-list').innerHTML = posts.map(p => `
+                <div onclick="openPost(${p.id})" class="border rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md bg-white">
+                    <img src="${p.image}" class="h-48 w-full object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-indigo-600 uppercase">${p.category}</span>
+                        <h2 class="font-bold text-lg mt-2">${p.title}</h2>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openPost(id) {
+            const p = posts.find(x => x.id === id);
+            document.getElementById('art-title').innerText = p.title;
+            document.getElementById('art-cat').innerText = p.category;
+            document.getElementById('art-img').src = p.image;
+            document.getElementById('art-content').innerHTML = p.content;
+            
+            // Update URL hash for Google (Simple routing)
+            window.location.hash = `article-${id}`;
+            
+            showPage('article');
+        }
+
+        function showHome() {
+            showPage('home');
+            window.location.hash = '';
+        }
+
+        function showPage(id) {
+            ['view-home', 'view-article', 'view-privacy'].forEach(x => document.getElementById(x).classList.add('hidden'));
+            document.getElementById(`view-${id}`).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        document.addEventListener('DOMContentLoaded', renderPosts);
+    </script>
+</body>
+</html>
+
+
